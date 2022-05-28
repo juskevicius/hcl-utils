@@ -15,7 +15,7 @@ describe('hcl utils,', () => {
 
     it('builds back an identical file', () => {
       const outputTfFile = hclUtils.compose(parsed);
-      expect(inputTfFile).toEqual(outputTfFile);
+      expect(outputTfFile).toEqual(inputTfFile);
     });
   });
 });

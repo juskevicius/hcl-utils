@@ -27,18 +27,21 @@ export const composeOutput = (parsedResult: any): string => {
 const composeArray = (value: Arr): string => {
   const [openingBracketLineNo, closingBracketLineNo] = value._bracketLines;
   const itemLines = value._itemLines;
-  const newLineOrNot1 = !itemLines || openingBracketLineNo === itemLines[0] ? '' : '\n';
+  const firstItemLineNo = Array.isArray(itemLines[0]) ? itemLines[0][0] : itemLines[0];
+  const newLineOrNot1 = !itemLines.length || openingBracketLineNo === firstItemLineNo ? '' : '\n';
   const items = value
     .map((item, idx) => {
       if (idx === 0) {
         return item;
-      } else if (itemLines[idx - 1] === itemLines[idx]) {
-        return `, ${item}`;
       } else {
-        return `,\n${item}`;
+        const prevLineNo = Array.isArray(itemLines[idx - 1]) ? (itemLines[idx - 1] as any)[1] : itemLines[idx - 1];
+        const currLineNo = Array.isArray(itemLines[idx]) ? (itemLines[idx] as any)[0] : itemLines[idx];
+        const newLineOrNot = prevLineNo === currLineNo ? ' ' : '\n';
+        return `,${newLineOrNot}${item}`;
       }
     })
     .join('');
-  const newLineOrNot2 = !itemLines || closingBracketLineNo === itemLines[itemLines.length - 1] ? '' : ',\n';
+  const lastItemLineNo = Array.isArray(itemLines[itemLines.length - 1]) ? (itemLines[itemLines.length - 1] as any)[1] : itemLines[itemLines.length - 1];
+  const newLineOrNot2 = !itemLines.length || closingBracketLineNo === lastItemLineNo ? '' : ',\n';
   return `${newLineOrNot1}${items}${newLineOrNot2}`;
 };

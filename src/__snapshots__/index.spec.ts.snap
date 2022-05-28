@@ -2,8 +2,10 @@
 
 exports[`hcl utils, when running on file arr.tf, does parsing correctly 1`] = `
 Object {
-  "_blank_line#19": "",
+  "_blank_line#26": "",
+  "_withEqualsSign": Array [],
   "resource \\"aws_security_group\\" \\"prod_sg\\"": Object {
+    "_withEqualsSign": Array [],
     "ingress": Object {
       "_withEqualsSign": Array [
         "cidr_blocks",
