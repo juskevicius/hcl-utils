@@ -68,6 +68,7 @@ Object {
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 */",
+  "_withEqualsSign": Array [],
   "output \\"some_val\\"": Object {
     "_withEqualsSign": Array [
       "value",
@@ -75,6 +76,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
     "value": "module.joujou.host",
   },
   "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
+    "_withEqualsSign": Array [],
     "provisioner \\"local-exec\\"": Object {
       "_withEqualsSign": Array [
         "command",
@@ -106,8 +108,10 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 exports[`hcl utils, when running on file eof.tf, does parsing correctly 1`] = `
 Object {
   "_blank_line#12": "",
+  "_withEqualsSign": Array [],
   "resource \\"null_resource\\" \\"askdj\\"": Object {
     "_blank_line#5": "",
+    "_withEqualsSign": Array [],
     "provisioner \\"local-exec\\"": Object {
       "_withEqualsSign": Array [
         "command",
@@ -147,6 +151,7 @@ EOF",
 exports[`hcl utils, when running on file math.tf, does parsing correctly 1`] = `
 Object {
   "_blank_line#6": "",
+  "_withEqualsSign": Array [],
   "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
     "_withEqualsSign": Array [
       "math",
@@ -166,7 +171,9 @@ exports[`hcl utils, when running on file methods.tf, does parsing correctly 1`] 
 Object {
   "_blank_line#11": "",
   "_blank_line#8": "",
+  "_withEqualsSign": Array [],
   "resource \\"null_resource\\" \\"askdj\\"": Object {
+    "_withEqualsSign": Array [],
     "triggers": Object {
       "_withEqualsSign": Array [
         "some_stuff",
@@ -192,6 +199,7 @@ Object {
   "_blank_line#2": "",
   "_blank_line#26": "",
   "_blank_line#3": "",
+  "_withEqualsSign": Array [],
   "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
     "_blank_line#7": "",
     "_withEqualsSign": Array [
@@ -219,8 +227,11 @@ Object {
       "command": "\\"echo 'aaa'\\"",
     },
     "provisioner \\"local-exec\\"#17": Object {
+      "_withEqualsSign": Array [],
       "deep": Object {
+        "_withEqualsSign": Array [],
         "nested": Object {
+          "_withEqualsSign": Array [],
           "property": Object {
             "_withEqualsSign": Array [
               "equals",
@@ -231,7 +242,9 @@ Object {
       },
     },
   },
-  "variable \\"github_users\\"": Object {},
+  "variable \\"github_users\\"": Object {
+    "_withEqualsSign": Array [],
+  },
 }
 `;
 
@@ -240,8 +253,9 @@ Object {
   "_blank_line#17": "",
   "_blank_line#22": "",
   "_blank_line#26": "",
-  "_blank_line#30": "",
+  "_blank_line#36": "",
   "_blank_line#7": "",
+  "_withEqualsSign": Array [],
   "output \\"some_val\\"": Object {
     "_withEqualsSign": Array [
       "value",
@@ -257,6 +271,7 @@ Object {
     "public_key": "tls_private_key.prod_tls_private_key.public_key_openssh",
   },
   "resource \\"null_resource\\" \\"askdj\\"": Object {
+    "_withEqualsSign": Array [],
     "triggers": Object {
       "_withEqualsSign": Array [
         "heroku_id",
@@ -267,6 +282,7 @@ Object {
     },
   },
   "terraform": Object {
+    "_withEqualsSign": Array [],
     "backend \\"s3\\"": Object {
       "_withEqualsSign": Array [
         "bucket",

@@ -25,7 +25,7 @@ export const parseTokens = (tokens: Token[]): any => {
       text += token.value;
     }
     lines.push(thisToken().line)
-    
+
     return { text, lines };
   };
 
@@ -55,6 +55,27 @@ export const parseTokens = (tokens: Token[]): any => {
     return !result[keyStr] ? keyStr : `${keyStr}#${token.line}`;
   };
 
+  const buildValue = () => {
+    let token = thisToken();
+    let value = '';
+    do {
+      if (token.type === 'textBlock') {
+        value += token.value;
+      } else if (token.type === '"') {
+        value += buildString().text;
+      } else if (token.type === '[') {
+        value = buildArray(token);
+      } else if (token.type === '{') {
+        value = buildObject();
+      } else {
+        value += token.value;
+      }
+      token = nextToken();
+    } while (token.type !== 'newLine')
+
+    return value;
+  }
+
   const parseNext = (result: any): any => {
     let token = nextToken();
 
@@ -80,21 +101,11 @@ export const parseTokens = (tokens: Token[]): any => {
           }
         } else if (typeof result === 'object') {
           const key = buildKey(result);
-
           token = thisToken();
-          if (token.value === ' = ') {
+          if (token.value.includes(' = ')) {
             result._withEqualsSign.push(key);
             token = nextToken();
-
-            if (token.type === 'textBlock') {
-              result[key] = token.value;
-            } else if (token.type === '"') {
-              result[key] = buildString().text;
-            } else if (token.type === '[') {
-              result[key] = buildArray(token);
-            } else if (token.type === '{') {
-              result[key] = buildObject();
-            }
+            result[key] = buildValue();
           } else if (token.type === '{') {
             result[key] = buildObject();
           }
@@ -111,7 +122,6 @@ export const parseTokens = (tokens: Token[]): any => {
   return buildObject();
 };
 
-// const parsableTokens = ['textBlock', '{', '}', '[', ']', 'comment'];
 const isTokenParsable = (tokens: Token[], tokenNo: number): boolean => {
   const token = tokens[tokenNo];
   if (token) {

@@ -16,7 +16,7 @@ export const composeOutput = (parsedResult: any): string => {
         tfFile += `${key} = [${composeArray(value as unknown as Arr)}]\n`;
       } else {
         key = key.split('#')[0];
-        const content = Object.entries(value as Object).length ? `\n${composeOutput(value)}` : '';
+        const content = Object.entries(value as Object).length > 1 ? `\n${composeOutput(value)}` : '';
         tfFile += `${key} {${content}}\n`;
       }
     }
