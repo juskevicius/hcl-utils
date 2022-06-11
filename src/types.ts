@@ -3,7 +3,9 @@ export interface Options {
 }
 
 export interface Arr {
-  _bracketLines: [number, number];
-  _itemLines: number[] | number[][];
+  _formatting: {
+    bracketLines: [number, number];
+    itemLines: number[] | number[][];
+  }
   map: (cb: (a: string, b: number) => string) => string[];
 }

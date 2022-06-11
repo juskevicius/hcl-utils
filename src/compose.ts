@@ -3,7 +3,7 @@ import { Arr } from './types';
 export const composeOutput = (parsedResult: any): string => {
   let tfFile = '';
   Object.entries(parsedResult).forEach(([key, value]) => {
-    if (key !== '_withEqualsSign') {
+    if (key !== '_formatting') {
       if (typeof value === 'string') {
         if (key.startsWith('_blank_line')) {
           tfFile += '\n';
@@ -16,7 +16,7 @@ export const composeOutput = (parsedResult: any): string => {
         tfFile += `${key} = [${composeArray(value as unknown as Arr)}]\n`;
       } else {
         key = key.split('#')[0];
-        const content = Object.entries(value as Object).length ? `\n${composeOutput(value)}` : '';
+        const content = Object.entries(value as Object).length > 1 ? `\n${composeOutput(value)}` : '';
         tfFile += `${key} {${content}}\n`;
       }
     }
@@ -25,8 +25,8 @@ export const composeOutput = (parsedResult: any): string => {
 };
 
 const composeArray = (value: Arr): string => {
-  const [openingBracketLineNo, closingBracketLineNo] = value._bracketLines;
-  const itemLines = value._itemLines;
+  const { itemLines, bracketLines } = value._formatting;
+  const [openingBracketLineNo, closingBracketLineNo] = bracketLines;
   const firstItemLineNo = Array.isArray(itemLines[0]) ? itemLines[0][0] : itemLines[0];
   const newLineOrNot1 = !itemLines.length || openingBracketLineNo === firstItemLineNo ? '' : '\n';
   const items = value
@@ -41,7 +41,9 @@ const composeArray = (value: Arr): string => {
       }
     })
     .join('');
-  const lastItemLineNo = Array.isArray(itemLines[itemLines.length - 1]) ? (itemLines[itemLines.length - 1] as any)[1] : itemLines[itemLines.length - 1];
+  const lastItemLineNo = Array.isArray(itemLines[itemLines.length - 1])
+    ? (itemLines[itemLines.length - 1] as any)[1]
+    : itemLines[itemLines.length - 1];
   const newLineOrNot2 = !itemLines.length || closingBracketLineNo === lastItemLineNo ? '' : ',\n';
   return `${newLineOrNot1}${items}${newLineOrNot2}`;
 };

@@ -4,7 +4,7 @@ export const tokenize = (input: string): moo.Token[] => {
   const anyChars = `[\\s\\S]*?`;
 
   const eof = `<<EOF${anyChars}EOF`; //e.g.: <<EOF content EOF
-  const otherText = `[a-zA-Z-_./*\\[\\]\\d]+`; //e.g.: aws.super_resource.id, locals, etc
+  const otherText = `[a-zA-Z-_:./*\\d?>]+`; //e.g.: aws.super_resource.id, locals, etc
   const digits = `[\\d]+`;
   const textBlockRegex = new RegExp(`${eof}|${otherText}|${digits}`);
 
@@ -20,8 +20,7 @@ export const tokenize = (input: string): moo.Token[] => {
     ']': ']',
     '(': '(',
     ')': ')',
-    operator: /\s[?=+*-\\/]+\s/,
-    '=': '=',
+    operator: /[ ]+[?=+*-\/]+ /,
     '"': '"',
     "'": "'",
     stringInterpolation: '${',

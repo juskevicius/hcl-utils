@@ -2,19 +2,26 @@
 
 exports[`hcl utils, when running on file arr.tf, does parsing correctly 1`] = `
 Object {
-  "_blank_line#26": "",
-  "_withEqualsSign": Array [],
+  "_blank_line#27": "",
+  "_formatting": Object {
+    "withEqualsSign": Array [],
+  },
   "resource \\"aws_security_group\\" \\"prod_sg\\"": Object {
-    "_withEqualsSign": Array [],
+    "_formatting": Object {
+      "withEqualsSign": Array [],
+    },
     "ingress": Object {
-      "_withEqualsSign": Array [
-        "cidr_blocks",
-        "stuff",
-        "otherStuff",
-        "moreStuff",
-        "records",
-        "records2",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "cidr_blocks",
+          "stuff",
+          "otherStuff",
+          "strazngeStuff",
+          "moreStuff",
+          "records",
+          "records2",
+        ],
+      },
       "cidr_blocks": Array [
         "\\"0.0.0.0/0\\"",
       ],
@@ -37,6 +44,9 @@ Object {
         )
       )
     }\\"",
+      ],
+      "strazngeStuff": Array [
+        "data.dns_a_record_set.gce_production_1",
       ],
       "stuff": Array [
         "\\"asdf\\"",
@@ -68,36 +78,52 @@ Object {
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 */",
+  "_formatting": Object {
+    "withEqualsSign": Array [],
+  },
   "output \\"some_val\\"": Object {
-    "_withEqualsSign": Array [
-      "value",
-    ],
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "value",
+      ],
+    },
     "value": "module.joujou.host",
   },
   "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
+    "_formatting": Object {
+      "withEqualsSign": Array [],
+    },
     "provisioner \\"local-exec\\"": Object {
-      "_withEqualsSign": Array [
-        "command",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "command",
+        ],
+      },
       "command": "\\"echo '\${tls_private_key.prod_tls_private_key.private_key_pem}' > ./myKey.pem\\"",
     },
     "provisioner \\"local-exec\\"#6": Object {
-      "_withEqualsSign": Array [
-        "command",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "command",
+        ],
+      },
       "command": "\\"chmod 400 ./myKey.pem\\"",
     },
     "provisioner \\"local-exec\\"#9": Object {
-      "_withEqualsSign": Array [
-        "command",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "command",
+        ],
+      },
       "command": "\\"echo 'aaa'\\"",
     },
   },
   "variable \\"project\\"": Object {
-    "_withEqualsSign": Array [
-      "default",
-    ],
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "default",
+      ],
+    },
     "default": "\\"eco-hjg-663\\"",
   },
 }
@@ -106,12 +132,20 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 exports[`hcl utils, when running on file eof.tf, does parsing correctly 1`] = `
 Object {
   "_blank_line#12": "",
+  "_formatting": Object {
+    "withEqualsSign": Array [],
+  },
   "resource \\"null_resource\\" \\"askdj\\"": Object {
     "_blank_line#5": "",
+    "_formatting": Object {
+      "withEqualsSign": Array [],
+    },
     "provisioner \\"local-exec\\"": Object {
-      "_withEqualsSign": Array [
-        "command",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "command",
+        ],
+      },
       "command": "<<EOF
 exec \${path.module}/../bin/heroku-stop-me \\\\
   --repo=travis-ci/whereami \\\\
@@ -122,11 +156,13 @@ EOF",
     },
     "website": Object {
       "_blank_line#9": "",
-      "_withEqualsSign": Array [
-        "index_document",
-        "error_document",
-        "routing_rules",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "index_document",
+          "error_document",
+          "routing_rules",
+        ],
+      },
       "error_document": "\\"error.html\\"",
       "index_document": "\\"index.html\\"",
       "routing_rules": "<<EOF
@@ -147,13 +183,18 @@ EOF",
 exports[`hcl utils, when running on file math.tf, does parsing correctly 1`] = `
 Object {
   "_blank_line#6": "",
+  "_formatting": Object {
+    "withEqualsSign": Array [],
+  },
   "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
-    "_withEqualsSign": Array [
-      "math",
-      "math2",
-      "math3",
-      "math4",
-    ],
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "math",
+        "math2",
+        "math3",
+        "math4",
+      ],
+    },
     "math": "merge(var.count) + var.id",
     "math2": "var.jjjj - 17",
     "math3": "var.lll * 16",
@@ -166,22 +207,32 @@ exports[`hcl utils, when running on file methods.tf, does parsing correctly 1`] 
 Object {
   "_blank_line#11": "",
   "_blank_line#8": "",
+  "_formatting": Object {
+    "withEqualsSign": Array [],
+  },
   "resource \\"null_resource\\" \\"askdj\\"": Object {
+    "_formatting": Object {
+      "withEqualsSign": Array [],
+    },
     "triggers": Object {
-      "_withEqualsSign": Array [
-        "some_stuff",
-        "config_signature",
-        "scale",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "some_stuff",
+          "config_signature",
+          "scale",
+        ],
+      },
       "config_signature": "sha256(join(\\",\\", values(jjjjj.asdjhf.ll_jjj.0)))",
       "scale": "join(\\",\\", var.some_var)",
       "some_stuff": "slice(var.ss, 0)",
     },
   },
   "variable \\"project\\"": Object {
-    "_withEqualsSign": Array [
-      "config_signature",
-    ],
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "config_signature",
+      ],
+    },
     "config_signature": "sha256(join(\\",\\", values(super_app.my_vars.0)))",
   },
 }
@@ -192,89 +243,136 @@ Object {
   "_blank_line#2": "",
   "_blank_line#26": "",
   "_blank_line#3": "",
+  "_formatting": Object {
+    "withEqualsSign": Array [],
+  },
   "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
     "_blank_line#7": "",
-    "_withEqualsSign": Array [
-      "num",
-      "bool",
-    ],
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "num",
+        "bool",
+      ],
+    },
     "bool": "true",
     "num": "5",
     "provisioner \\"local-exec\\"": Object {
-      "_withEqualsSign": Array [
-        "command",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "command",
+        ],
+      },
       "command": "\\"echo '\${tls_private_key.prod_tls_private_key.private_key_pem}' > ./myKey.pem\\"",
     },
     "provisioner \\"local-exec\\"#11": Object {
-      "_withEqualsSign": Array [
-        "command",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "command",
+        ],
+      },
       "command": "\\"chmod 400 ./myKey.pem\\"",
     },
     "provisioner \\"local-exec\\"#14": Object {
-      "_withEqualsSign": Array [
-        "command",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "command",
+        ],
+      },
       "command": "\\"echo 'aaa'\\"",
     },
     "provisioner \\"local-exec\\"#17": Object {
+      "_formatting": Object {
+        "withEqualsSign": Array [],
+      },
       "deep": Object {
+        "_formatting": Object {
+          "withEqualsSign": Array [],
+        },
         "nested": Object {
+          "_formatting": Object {
+            "withEqualsSign": Array [],
+          },
           "property": Object {
-            "_withEqualsSign": Array [
-              "equals",
-            ],
+            "_formatting": Object {
+              "withEqualsSign": Array [
+                "equals",
+              ],
+            },
             "equals": "\\"this\\"",
           },
         },
       },
     },
   },
-  "variable \\"github_users\\"": Object {},
+  "variable \\"github_users\\"": Object {
+    "_formatting": Object {
+      "withEqualsSign": Array [],
+    },
+  },
 }
 `;
 
 exports[`hcl utils, when running on file strings.tf, does parsing correctly 1`] = `
 Object {
   "_blank_line#17": "",
-  "_blank_line#22": "",
-  "_blank_line#26": "",
-  "_blank_line#30": "",
+  "_blank_line#23": "",
+  "_blank_line#28": "",
+  "_blank_line#38": "",
   "_blank_line#7": "",
+  "_formatting": Object {
+    "withEqualsSign": Array [],
+  },
   "output \\"some_val\\"": Object {
-    "_withEqualsSign": Array [
-      "value",
-    ],
+    "ENVIRONMENT": "var.environment",
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "value",
+        "ENVIRONMENT",
+      ],
+    },
     "value": "module.joujou.host",
   },
   "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
-    "_withEqualsSign": Array [
-      "key_name",
-      "public_key",
-    ],
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "key_name",
+        "some_val",
+        "public_key",
+      ],
+    },
     "key_name": "\\"myKey\\"",
     "public_key": "tls_private_key.prod_tls_private_key.public_key_openssh",
+    "some_val": "\\"http://\${local.thing}/path?param\\"",
   },
   "resource \\"null_resource\\" \\"askdj\\"": Object {
+    "_formatting": Object {
+      "withEqualsSign": Array [],
+    },
     "triggers": Object {
-      "_withEqualsSign": Array [
-        "heroku_id",
-        "version",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "heroku_id",
+          "version",
+        ],
+      },
       "heroku_id": "super_app.some_name.id",
       "version": "var.some_version",
     },
   },
   "terraform": Object {
+    "_formatting": Object {
+      "withEqualsSign": Array [],
+    },
     "backend \\"s3\\"": Object {
-      "_withEqualsSign": Array [
-        "bucket",
-        "key",
-        "region",
-        "encrypt",
-        "dynamodb_table",
-      ],
+      "_formatting": Object {
+        "withEqualsSign": Array [
+          "bucket",
+          "key",
+          "region",
+          "encrypt",
+          "dynamodb_table",
+        ],
+      },
       "bucket": "\\"random-terraform-state\\"",
       "dynamodb_table": "random-terraform.*.state",
       "encrypt": "\\"true\\"",
@@ -290,10 +388,12 @@ Object {
     },\${
     join(\\",\\", data.production_3_nat.addrs)
   }\\"",
-    "_withEqualsSign": Array [
-      "default",
-      "SOME_IPS",
-    ],
+    "_formatting": Object {
+      "withEqualsSign": Array [
+        "default",
+        "SOME_IPS",
+      ],
+    },
     "default": "\\"eco-hjg-663\\"",
   },
 }

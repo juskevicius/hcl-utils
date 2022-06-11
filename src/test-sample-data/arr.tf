@@ -4,7 +4,8 @@ resource "aws_security_group" "prod_sg" {
     stuff = ["asdf", "asdf", "asdf", "asdf", "asdf", "asdf",
       "fff", "bbb",
     "asdf", "asdf", "asdf", "asdf"]
-    otherStuff = []
+    otherStuff    = []
+    strazngeStuff = [data.dns_a_record_set.gce_production_1]
     moreStuff = [
       "text",
       "moreText",

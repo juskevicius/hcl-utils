@@ -17,11 +17,13 @@ terraform {
 
 resource "aws_key_pair" "prod_ec2_ssh_key_pair" {
   key_name   = "myKey"
+  some_val   = "http://${local.thing}/path?param"
   public_key = tls_private_key.prod_tls_private_key.public_key_openssh
 }
 
 output "some_val" {
-  value = module.joujou.host
+  value       = module.joujou.host
+  ENVIRONMENT = var.environment
 }
 
 variable "project" {
