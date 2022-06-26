@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hcl utils, when running on file arr.tf, does parsing correctly 1`] = `
+Object {
+  "_blank_line#26": "",
+  "_withEqualsSign": Array [],
+  "resource \\"aws_security_group\\" \\"prod_sg\\"": Object {
+    "_withEqualsSign": Array [],
+    "ingress": Object {
+      "_withEqualsSign": Array [
+        "cidr_blocks",
+        "stuff",
+        "otherStuff",
+        "moreStuff",
+        "records",
+        "records2",
+      ],
+      "cidr_blocks": Array [
+        "\\"0.0.0.0/0\\"",
+      ],
+      "moreStuff": Array [
+        "\\"text\\"",
+        "\\"moreText\\"",
+      ],
+      "otherStuff": Array [],
+      "records": Array [
+        "\\"\${data.dns_a_record_set.gce_production_1_nat.addrs}\\"",
+        "\\"\${data.dns_a_record_set.gce_production_2_nat.addrs}\\"",
+        "\\"\${data.dns_a_record_set.gce_production_3_nat.addrs}\\"",
+      ],
+      "records2": Array [
+        "\\"\${
+      distinct(
+        concat(
+          data.dns_a_record_set.gce_production_1_build_cache.addrs,
+          data.dns_a_record_set.gce_production_2_build_cache.addrs
+        )
+      )
+    }\\"",
+      ],
+      "stuff": Array [
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+        "\\"fff\\"",
+        "\\"bbb\\"",
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+        "\\"asdf\\"",
+      ],
+    },
+  },
+}
+`;
+
+exports[`hcl utils, when running on file comments.tf, does parsing correctly 1`] = `
+Object {
+  "_blank_line#17": "",
+  "_blank_line#21": "",
+  "_comment#1": "# Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "_comment#13": "
+// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "_comment#18": "/*
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+*/",
+  "_withEqualsSign": Array [],
+  "output \\"some_val\\"": Object {
+    "_withEqualsSign": Array [
+      "value",
+    ],
+    "value": "module.joujou.host",
+  },
+  "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
+    "_withEqualsSign": Array [],
+    "provisioner \\"local-exec\\"": Object {
+      "_withEqualsSign": Array [
+        "command",
+      ],
+      "command": "\\"echo '\${tls_private_key.prod_tls_private_key.private_key_pem}' > ./myKey.pem\\"",
+    },
+    "provisioner \\"local-exec\\"#6": Object {
+      "_withEqualsSign": Array [
+        "command",
+      ],
+      "command": "\\"chmod 400 ./myKey.pem\\"",
+    },
+    "provisioner \\"local-exec\\"#9": Object {
+      "_withEqualsSign": Array [
+        "command",
+      ],
+      "command": "\\"echo 'aaa'\\"",
+    },
+  },
+  "variable \\"project\\"": Object {
+    "_withEqualsSign": Array [
+      "default",
+    ],
+    "default": "\\"eco-hjg-663\\"",
+  },
+}
+`;
+
+exports[`hcl utils, when running on file eof.tf, does parsing correctly 1`] = `
+Object {
+  "_blank_line#12": "",
+  "_withEqualsSign": Array [],
+  "resource \\"null_resource\\" \\"askdj\\"": Object {
+    "_blank_line#5": "",
+    "_withEqualsSign": Array [],
+    "provisioner \\"local-exec\\"": Object {
+      "_withEqualsSign": Array [
+        "command",
+      ],
+      "command": "<<EOF
+exec \${path.module}/../bin/heroku-stop-me \\\\
+  --repo=travis-ci/whereami \\\\
+  --app=\${heroku_app.whereami.id} \\\\
+  --ps-scale=\${join(\\",\\", var.whereami_scale)} \\\\
+  --deploy-version=\${var.whereami_version}
+EOF",
+    },
+    "website": Object {
+      "_blank_line#9": "",
+      "_withEqualsSign": Array [
+        "index_document",
+        "error_document",
+        "routing_rules",
+      ],
+      "error_document": "\\"error.html\\"",
+      "index_document": "\\"index.html\\"",
+      "routing_rules": "<<EOF
+[{
+    \\"Condition\\": {
+        \\"KeyPrefixEquals\\": \\"docs/\\"
+    },
+    \\"Redirect\\": {
+        \\"ReplaceKeyPrefixWith\\": \\"documents/\\"
+    }
+}]
+EOF",
+    },
+  },
+}
+`;
+
+exports[`hcl utils, when running on file math.tf, does parsing correctly 1`] = `
+Object {
+  "_blank_line#6": "",
+  "_withEqualsSign": Array [],
+  "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
+    "_withEqualsSign": Array [
+      "math",
+      "math2",
+      "math3",
+      "math4",
+    ],
+    "math": "merge(var.count) + var.id",
+    "math2": "var.jjjj - 17",
+    "math3": "var.lll * 16",
+    "math4": "var.kkkk / 15",
+  },
+}
+`;
+
+exports[`hcl utils, when running on file methods.tf, does parsing correctly 1`] = `
+Object {
+  "_blank_line#11": "",
+  "_blank_line#8": "",
+  "_withEqualsSign": Array [],
+  "resource \\"null_resource\\" \\"askdj\\"": Object {
+    "_withEqualsSign": Array [],
+    "triggers": Object {
+      "_withEqualsSign": Array [
+        "some_stuff",
+        "config_signature",
+        "scale",
+      ],
+      "config_signature": "sha256(join(\\",\\", values(jjjjj.asdjhf.ll_jjj.0)))",
+      "scale": "join(\\",\\", var.some_var)",
+      "some_stuff": "slice(var.ss, 0)",
+    },
+  },
+  "variable \\"project\\"": Object {
+    "_withEqualsSign": Array [
+      "config_signature",
+    ],
+    "config_signature": "sha256(join(\\",\\", values(super_app.my_vars.0)))",
+  },
+}
+`;
+
+exports[`hcl utils, when running on file other.tf, does parsing correctly 1`] = `
+Object {
+  "_blank_line#2": "",
+  "_blank_line#26": "",
+  "_blank_line#3": "",
+  "_withEqualsSign": Array [],
+  "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
+    "_blank_line#7": "",
+    "_withEqualsSign": Array [
+      "num",
+      "bool",
+    ],
+    "bool": "true",
+    "num": "5",
+    "provisioner \\"local-exec\\"": Object {
+      "_withEqualsSign": Array [
+        "command",
+      ],
+      "command": "\\"echo '\${tls_private_key.prod_tls_private_key.private_key_pem}' > ./myKey.pem\\"",
+    },
+    "provisioner \\"local-exec\\"#11": Object {
+      "_withEqualsSign": Array [
+        "command",
+      ],
+      "command": "\\"chmod 400 ./myKey.pem\\"",
+    },
+    "provisioner \\"local-exec\\"#14": Object {
+      "_withEqualsSign": Array [
+        "command",
+      ],
+      "command": "\\"echo 'aaa'\\"",
+    },
+    "provisioner \\"local-exec\\"#17": Object {
+      "_withEqualsSign": Array [],
+      "deep": Object {
+        "_withEqualsSign": Array [],
+        "nested": Object {
+          "_withEqualsSign": Array [],
+          "property": Object {
+            "_withEqualsSign": Array [
+              "equals",
+            ],
+            "equals": "\\"this\\"",
+          },
+        },
+      },
+    },
+  },
+  "variable \\"github_users\\"": Object {
+    "_withEqualsSign": Array [],
+  },
+}
+`;
+
+exports[`hcl utils, when running on file strings.tf, does parsing correctly 1`] = `
+Object {
+  "_blank_line#17": "",
+  "_blank_line#22": "",
+  "_blank_line#26": "",
+  "_blank_line#36": "",
+  "_blank_line#7": "",
+  "_withEqualsSign": Array [],
+  "output \\"some_val\\"": Object {
+    "_withEqualsSign": Array [
+      "value",
+    ],
+    "value": "module.joujou.host",
+  },
+  "resource \\"aws_key_pair\\" \\"prod_ec2_ssh_key_pair\\"": Object {
+    "_withEqualsSign": Array [
+      "key_name",
+      "public_key",
+    ],
+    "key_name": "\\"myKey\\"",
+    "public_key": "tls_private_key.prod_tls_private_key.public_key_openssh",
+  },
+  "resource \\"null_resource\\" \\"askdj\\"": Object {
+    "_withEqualsSign": Array [],
+    "triggers": Object {
+      "_withEqualsSign": Array [
+        "heroku_id",
+        "version",
+      ],
+      "heroku_id": "super_app.some_name.id",
+      "version": "var.some_version",
+    },
+  },
+  "terraform": Object {
+    "_withEqualsSign": Array [],
+    "backend \\"s3\\"": Object {
+      "_withEqualsSign": Array [
+        "bucket",
+        "key",
+        "region",
+        "encrypt",
+        "dynamodb_table",
+      ],
+      "bucket": "\\"random-terraform-state\\"",
+      "dynamodb_table": "random-terraform.*.state",
+      "encrypt": "\\"true\\"",
+      "key": "\\"terraform-config/build-caching-production-1.tfstate\\"",
+      "region": "\\"us-east-1\\"",
+    },
+  },
+  "variable \\"project\\"": Object {
+    "SOME_IPS": "\\"\${
+    join(\\",\\", data.production_1_nat.addrs)
+    },\${
+    join(\\",\\", data.production_2_nat.addrs)
+    },\${
+    join(\\",\\", data.production_3_nat.addrs)
+  }\\"",
+    "_withEqualsSign": Array [
+      "default",
+      "SOME_IPS",
+    ],
+    "default": "\\"eco-hjg-663\\"",
+  },
+}
+`;

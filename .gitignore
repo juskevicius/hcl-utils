@@ -1,0 +1,8 @@
+# modules
+/node_modules
+
+# build
+/dist
+
+# unit test coverage
+/coverage
